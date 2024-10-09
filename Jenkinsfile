@@ -23,7 +23,7 @@ pipeline {
 
         stage('Tests') {
             parallel {
-                stage('Test') {
+                stage('Unit Tests') {
                     agent {
                     docker {
                         image 'node:18-alpine'
@@ -38,7 +38,7 @@ pipeline {
                     }
                     post {
                         always {
-                            junit 'jest-results/junit.xml'
+                            junit 'test-results/junit.xml'
                         }
                     }
                 }
